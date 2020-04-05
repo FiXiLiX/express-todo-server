@@ -20,4 +20,4 @@ const tasks = require('./routes/tasks')
 app.use('/tasks', tasks)
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
-app.listen(process.env.PORT, () => console.log('Server started at port: ' + process.env.PORT))
+app.listen(process.env.PORT || 3000, () => console.log('Server started at port: ' + process.env.PORT))
