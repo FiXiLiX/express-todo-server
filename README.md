@@ -18,6 +18,10 @@ Once in repo, copy .env.example file to .env
 ```bash
 copy .env.example .env
 ```
+Don't forget to install dependencies
+```bash
+npm install
+```
 Add url of MongoDB in .env file and execute
 ```bash
 npm run dev
