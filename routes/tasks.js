@@ -28,8 +28,7 @@ router.post('/', (req, res) => {
         created_at: createdTime,
         updated_at: createdTime
     })
-    .then((error, task) => {
-        if(error) throw(error)
+    .then((task) => {
         return res.status(200).json(task)
     })
     .catch(error => res.status(400).json(error))
@@ -43,6 +42,7 @@ router.patch('/:id', (req, res) => {
         if(task.deleted_at!=undefined) throw({message: 'Can\'t change deleted task'})
         task.title = title
         task.description = description
+        task.updated_at = new Date()
         task.save()
         .then(() => {
             return res.status(200).json(task)

@@ -5,8 +5,8 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const app = express()
 
-// const expressSwagger = require('express-swagger-generator')(app)
-// const options = require('./swagger.js')
+const swaggerUi = require('swagger-ui-express')
+const swaggerDocument = require('./swagger.json')
 
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(cors())
@@ -19,5 +19,5 @@ db.once('open', () => console.log('Connected to Database'))
 const tasks = require('./routes/tasks')
 app.use('/tasks', tasks)
 
-// expressSwagger(options)
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 app.listen(process.env.PORT, () => console.log('Server started at port: ' + process.env.PORT))
